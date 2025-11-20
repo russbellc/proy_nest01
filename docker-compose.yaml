@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+    db:
+        image: postgres:15
+        container_name: teslo_db
+        restart: unless-stopped
+        environment:
+            TZ: "America/Lima"
+            POSTGRES_USER: "${DB_USERNAME}"
+            POSTGRES_PASSWORD: "${DB_PASSWORD}"
+            POSTGRES_DB: "${DB_NAME}"
+        ports:
+            - "5432:5432"
+        volumes:
+            - ./db-data:/var/lib/postgresql/data
+            # Si quieres ejecutar SQL al iniciar por primera vez, crea ./docker/init.sql
+            - ./docker/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+
+volumes:
+    db-data:

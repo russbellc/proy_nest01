@@ -44,6 +44,15 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
+## Inicializar Docker
+
+1. Levantar la base de datos
+```bash
+# development
+$ docker-composo up -d
+
+```
+
 ## Run tests
 
 ```bash
